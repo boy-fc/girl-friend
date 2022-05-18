@@ -27,7 +27,7 @@ jobs:
       - name: install node.js
         uses: actions/setup-node@v3.0.0 
         with: 
-              node-version: "14.X"
+              node-version: "14.8.0"
       - name: install deps
         run: npm install
       - name: build app
