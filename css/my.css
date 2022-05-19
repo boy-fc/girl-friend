@@ -9,6 +9,18 @@
     -webkit-transition: 0.8s ease-out;
 }
 
+.heart1 {
+    -webkit-animation: 6s ease-in-out infinite;
+    -webkit-animation-name: flash;
+    -webkit-transform-origin: right bottom;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transition: 0.8s ease-out;
+    -webkit-transition: 0.8s ease-out;
+    width: 100%;
+}
+
 body {
     font-family: 'Microsoft Yahei', Tahoma, Helvetica, Arial, sans-serif;
     font-weight: 300;
@@ -325,4 +337,10 @@ div {
 
 .slide-7 {
     color: #000000;
+}
+
+#time-box {
+    font-size: 36px;
+    top: 30%;
+    position: relative;
 }

@@ -291,6 +291,19 @@ var plugin = {
                                 $('.title-text').css('-webkit-animation-name','shake');
                                 $('.p1f1').addClass('a-fadein11');
                             },3000);
+
+                            setTimeout(function(){
+                                $('.heart1').css('top','30%');
+                                $('.heart1').css('-webkit-animation-name','none');
+                                $('.heart1').css('-moz-animation-name','none');
+                                $('.heart1').css('-ms-animation-name','none');
+                                $('.heart1').css('animation-name','none');
+                                $('.title-text').fadeIn(1000);
+                                $('.slide-1').css('background','#333333');
+                                $('.title-border').css('width','100%');
+                                $('.title-text').css('-webkit-animation-name','shake');
+                                $('.p1f1').addClass('a-fadein11');
+                            },3000);
                         },100);
                     },500);
                     plugin.audio_play();
@@ -437,3 +450,36 @@ setTimeout(function(){
     $('.slide-7').css('background',"#ffffff");
 
 },3000)
+
+
+//@function 根据目标时间在当前时间的前后分别返回`距离XXX已过去XX天XX小时XX分XX秒`或`距离XXXX还有:XX天XX小时XX分XX秒`
+//@param  endT为目标时间,需按照字符串格式输入;endName为目标时间的名字,默认为`目标时间`;obj为在网页内的输出对象.
+//@return  true表示为目标时间为过去,false表示目标时间为未来
+           
+function timeDifference(endT, obj) {
+    var startTime = new Date().getTime();//引入当前时间戳
+    var endTime = new Date(endT).getTime();//引入结束目标时间戳
+    var secondDif = parseInt((endTime - startTime) / 1000);//计算真实时间差,单位s/秒
+    if (secondDif < 0) {
+        var secondDifference = -secondDif;
+    } else {
+        var secondDifference = secondDif;
+    }//定义时间差为正
+    var day = parseInt(secondDifference / 24 / 60 / 60);//计算出天数取整
+    var hour = parseInt(secondDifference / 60 / 60) % 24;//计算出总小时数去掉达到一天24h的部分
+    var minute = parseInt(secondDifference / 60) % 60;//计算出总分钟数去掉达到一小时60分钟的部分
+    var second = secondDifference % 60;//总秒数去掉达到一分钟60秒的部分
+    if (secondDif < 0) {
+        obj.innerHTML = `我们已经在一起:<br><span>${day < 10 ? '0' + day : day} 天 ${hour < 10 ? '0' + hour : hour} 小时 ${minute < 10 ? '0' + minute : minute} 分钟 ${second < 10 ? '0' + second : second} 秒</span>`
+        return false;
+    } else {
+        obj.innerHTML = `距离${endName}还有:<br><span>${day < 10 ? '0' + day : day} 天 ${hour < 10 ? '0' + hour : hour} 小时 ${minute < 10 ? '0' + minute : minute} 分钟 ${second < 10 ? '0' + second : second} 秒</span>`
+        return true;
+    }//根据真实时间差选择输出语句.
+}
+
+timep();// 调用递归函数
+function timep() {
+    timeDifference(`2022/5/10 22:13:14`,document.getElementById('time-box')); //此处先调用一次防止出现刷页面后没有内容 
+    ptimer = setTimeout(timep, 1000); //在延时器中设置每过1000ms,即1s调用timep函数实现递归
+}
