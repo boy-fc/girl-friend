@@ -430,7 +430,7 @@ setTimeout(function(){
     //$('.slide-3').css('background',"#FF9999");
     $('.slide-4').css('background',"#FFCCCC");
     //$('.slide-5').css('background',"#FFCCCC");
-    $('.slide-5').css('background',"url('images/my/two.jpg')");
+    // $('.slide-5').css('background',"url('images/my/two.jpg')");
     $('.slide-5').css('background-size',"100% 100%");
     $('.slide-6').css('background',"url('images/my/back6.jpg')");
     $('.slide-6').css('background-size',"100% 100%");
